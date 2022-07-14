@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.194.0/containers/docker-existing-dockerfile
+{
+	"name": "zb-env",
+	"context": "..",
+	"dockerFile": "./Dockerfile",
+	"settings": {},
+	"runArgs": [
+		"--network=network1",
+		"--dns=114.114.114.114",
+		"--privileged"
+	],
+	"appPort": ["5173:5173"],
+	"containerEnv": {
+		"DISPLAY": "host.docker.internal:0.0"
+	},
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"mhutchie.git-graph",
+		"eamodio.gitlens",
+		"antfu.where-am-i",
+		"voorjaar.windicss-intellisense",
+		"EditorConfig.EditorConfig",
+		"streetsidesoftware.code-spell-checker",
+		"wix.vscode-import-cost",
+		"christian-kohler.path-intellisense"
+	],
+	"mounts": [
+		"source=root,target=/root,type=volume",
+		"source=repos,target=/root/repos,type=volume",
+		"source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
+		"source=docker,target=/var/lib/docker,type=volume",
+		"source=pnpm-bin,target=/root/.local/share/pnpm,type=volume",
+		"source=ssh,target=/root/.ssh,type=volume"
+	],
+	"remoteUser": "root"
+}
